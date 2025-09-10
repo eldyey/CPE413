@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Milestones in Computer History — Interactive Timeline</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/assets/icon.jpg">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <svg width="28" height="28" viewBox="0 0 24 24" class="me-2" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#0d6efd"/><path d="M7 12h10M7 8h10M7 16h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Computer History Milestones
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="#timeline" class="nav-link">Timeline</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero bg-gradient py-6 text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1 class="display-6 mb-2">Milestones in Computer History</h1>
+          <p class="lead mb-3">A concise, interactive timeline of major innovations that changed computing performance — each entry includes the year, a short description, and a performance impact analysis.</p>
+          <div class="d-flex gap-2">
+            <a class="btn btn-light btn-lg" href="#timeline">Explore Timeline</a>
+            <button class="btn btn-outline-light btn-lg" id="randomBtn">Show Random Milestone</button>
+          </div>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block text-center">
+          <!-- Simple illustrative SVG -->
+          <svg width="260" height="180" viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
+            <rect rx="12" width="260" height="180" fill="#0d6efd"/>
+            <g fill="#fff" opacity="0.95">
+              <rect x="28" y="30" width="200" height="18" rx="6"/>
+              <rect x="28" y="62" width="150" height="12" rx="6"/>
+              <rect x="28" y="82" width="180" height="12" rx="6"/>
+              <rect x="28" y="102" width="110" height="12" rx="6"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <!-- Controls -->
+    <section class="mb-4">
+      <div class="row g-2 align-items-center">
+        <div class="col-md-5">
+          <input id="searchInput" class="form-control" placeholder="Search milestones (name, year, keyword)..." />
+        </div>
+        <div class="col-md-3">
+          <select id="eraFilter" class="form-select">
+            <option value="all">All eras</option>
+            <option value="pre1900">Pre-1900</option>
+            <option value="1900-1949">1900–1949</option>
+            <option value="1950-1969">1950–1969</option>
+            <option value="1970-1989">1970–1989</option>
+            <option value="1990-2009">1990–2009</option>
+            <option value="2010-">2010–present</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <select id="sortSelect" class="form-select">
+            <option value="year-asc">Year ▲</option>
+            <option value="year-desc">Year ▼</option>
+            <option value="name-asc">Name A–Z</option>
+          </select>
+        </div>
+        <div class="col-md-2 text-end">
+          <small class="text-muted">Showing <span id="countBadge">0</span> milestones</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline / Cards -->
+    <section id="timeline" class="mb-5">
+      <div id="cardsContainer" class="row g-4">
+        <!-- JS will render cards here -->
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="about" class="pt-4">
+      <h3>About this Project</h3>
+      <p>
+        This page was built as a compact interactive learning resource. Each milestone includes a short description and a performance impact analysis that ties the innovation to concrete improvements such as throughput, latency, cost, or parallelism. Use the search and filters to explore specific eras or terms.
+      </p>
+    </section>
+  </main>
+
+  <!-- Modal for details -->
+  <div class="modal fade" id="detailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Milestone</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p id="modalYear" class="text-muted mb-2"></p>
+          <p id="modalDesc"></p>
+          <hr />
+          <h6>Performance Impact</h6>
+          <p id="modalImpact"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a id="modalReadMore" class="btn btn-primary" target="_blank" rel="noopener">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-4 bg-light mt-5">
+    <div class="container text-center small text-muted">
+      Created for coursework — files ready to zip. © Your Name
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS (bundle includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

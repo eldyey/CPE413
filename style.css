@@ -1,0 +1,84 @@
+:root{
+  --accent:#0d6efd;
+  --muted:#6c757d;
+  --bg-gradient: linear-gradient(135deg,#0d6efd 0%,#6610f2 100%);
+  --card-bg: #ffffff;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+body{
+  background: #f8f9fa;
+  color: #222;
+}
+
+.navbar-brand svg{border-radius:6px}
+
+.hero{
+  background: var(--bg-gradient);
+  color: white;
+  margin-bottom: 1.5rem;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.card-milestone {
+  transition: transform .18s ease, box-shadow .18s ease;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(17,24,39,0.06);
+  background: linear-gradient(180deg, #fff, #fbfbff);
+}
+
+.card-milestone:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 30px rgba(17,24,39,0.08);
+}
+
+.lead{
+    color: black;
+}
+
+.display-6{
+    color: black;
+}
+
+.milestone-year{
+  font-weight:700;
+  color:var(--accent);
+  letter-spacing: .3px;
+}
+
+.milestone-title{
+  font-size:1.05rem;
+  font-weight:600;
+}
+
+.card-footer {
+  background: transparent;
+  border-top:0;
+}
+
+.badge-era{
+  background: rgba(13,110,253,0.08);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: .45rem .6rem;
+  font-weight:600;
+  font-size:.75rem;
+}
+
+.kicker{
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.small-desc{
+  color: #3b3b3b;
+  margin-top: .35rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px){
+  .hero { border-radius: 0; }
+  .card-milestone { border-radius: 10px; }
+}
