@@ -77,7 +77,6 @@ body{
   margin-top: .35rem;
 }
 
-/* Responsive tweaks */
 @media (max-width: 768px){
   .hero { border-radius: 0; }
   .card-milestone { border-radius: 10px; }

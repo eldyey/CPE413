@@ -1,7 +1,3 @@
-// script.js
-
-// Data: major milestones in computer history with required fields.
-// Each entry: id, name, year, description (2-3 sentences), impact (3-5 sentences), eraTag, readMore (optional link)
 const milestones = [
   {
     id: 'pascaline',
@@ -122,7 +118,6 @@ const milestones = [
   }
 ];
 
-// Utilities
 const cardsContainer = document.getElementById('cardsContainer');
 const searchInput = document.getElementById('searchInput');
 const eraFilter = document.getElementById('eraFilter');
@@ -178,7 +173,6 @@ function renderCards(data){
     cardsContainer.appendChild(col);
   });
 
-  // attach listeners
   document.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const id = e.currentTarget.getAttribute('data-id');
@@ -204,9 +198,9 @@ function applyFilters(){
   const sort = sortSelect.value;
 
   let filtered = milestones.filter(m => {
-    // era filter
+    
     if(!eraMatchesFilter(m, era)) return false;
-    // search: check name, description, impact, year
+   
     if(!q) return true;
     return (
       m.name.toLowerCase().includes(q) ||
@@ -216,7 +210,7 @@ function applyFilters(){
     );
   });
 
-  // sorting
+ 
   if(sort === 'year-asc') filtered.sort((a,b)=>a.year - b.year);
   else if(sort === 'year-desc') filtered.sort((a,b)=>b.year - a.year);
   else if(sort === 'name-asc') filtered.sort((a,b)=>a.name.localeCompare(b.name));
@@ -224,10 +218,8 @@ function applyFilters(){
   renderCards(filtered);
 }
 
-// initial render
 applyFilters();
 
-// event listeners
 searchInput.addEventListener('input', debounce(applyFilters, 180));
 eraFilter.addEventListener('change', applyFilters);
 sortSelect.addEventListener('change', applyFilters);
@@ -236,7 +228,7 @@ randomBtn.addEventListener('click', ()=>{
   showDetail(milestones[idx].id);
 });
 
-// utility: debounce to avoid too many renders
+
 function debounce(fn, wait){
   let t;
   return function(...args){
