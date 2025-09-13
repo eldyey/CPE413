@@ -34,13 +34,7 @@ body{
   box-shadow: 0 18px 30px rgba(17,24,39,0.08);
 }
 
-.lead{
-    color: black;
-}
-
-.display-6{
-    color: black;
-}
+.lead, .display-6{ color: black; }
 
 .milestone-year{
   font-weight:700;
@@ -53,10 +47,7 @@ body{
   font-weight:600;
 }
 
-.card-footer {
-  background: transparent;
-  border-top:0;
-}
+.card-footer { background: transparent; border-top:0; }
 
 .badge-era{
   background: rgba(13,110,253,0.08);
@@ -67,17 +58,42 @@ body{
   font-size:.75rem;
 }
 
-.kicker{
-  font-size: .85rem;
-  color: var(--muted);
-}
+.kicker{ font-size: .85rem; color: var(--muted); }
 
-.small-desc{
-  color: #3b3b3b;
-  margin-top: .35rem;
-}
+.small-desc{ color: #3b3b3b; margin-top: .35rem; }
 
 @media (max-width: 768px){
   .hero { border-radius: 0; }
   .card-milestone { border-radius: 10px; }
+}
+
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+body.dark .navbar {
+  background-color: #222 !important;
+}
+body.dark .card-milestone {
+  background: #1e1e1e;
+  color: #eee;
+}
+body.dark .small-desc {
+  color: #ccc;
+}
+body.dark footer {
+  background: #1e1e1e;
+  color: #ccc;
+}
+body.dark .lead,
+body.dark .display-6 {
+  color: #fff;
+}
+body.dark .modal-content {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+#darkModeBtn {
+  margin-top: 4px; 
 }
